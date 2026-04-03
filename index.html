@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>シフト作成 整理提案 | 3枚スライド</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --ink:      #1a2332;
+  --ink-mid:  #3d5166;
+  --ink-soft: #6b7f94;
+  --ink-mute: #9aaab8;
+  --teal:     #2a8c7a;
+  --teal-lt:  #e6f5f2;
+  --teal-mid: #4db8a4;
+  --sage:     #5a8a6e;
+  --amber:    #d97706;
+  --amber-lt: #fef3c7;
+  --red-soft: #e05252;
+  --bg:       #f5f7f9;
+  --white:    #ffffff;
+  --border:   #dde4ec;
+  --shadow:   rgba(26,35,50,0.10);
+}
+
+body {
+  font-family: 'Noto Sans JP', 'Hiragino Sans', 'Yu Gothic', sans-serif;
+  background: #dde4ec;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding: 40px 20px 60px;
+}
+
+/* ==============================
+   SLIDE BASE
+============================== */
+.slide {
+  width: 960px;
+  min-height: 540px;
+  background: var(--white);
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 8px 40px var(--shadow), 0 1px 4px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+}
+
+.slide-num {
+  position: absolute;
+  bottom: 16px;
+  right: 24px;
+  font-size: 10px;
+  color: var(--ink-mute);
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+
+/* ==============================
+   SLIDE 1 — Before / After
+============================== */
+
+/* Top bar */
+.s1-topbar {
+  background: var(--ink);
+  padding: 20px 48px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.s1-topbar-left {}
+.s1-eyebrow {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--teal-mid);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.s1-title {
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--white);
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+}
+.s1-title em {
+  color: #fbbf24;
+  font-style: normal;
+}
+/* ▼ [修正①] 不安を消す一文バッジ */
+.s1-reassure {
+  margin-top: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(77,184,164,0.18);
+  border: 1px solid rgba(77,184,164,0.40);
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #a7f3d0;
+  letter-spacing: 0.3px;
+}
+.s1-reassure::before { content: '✓'; font-size: 11px; }
+
+.s1-pill {
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 50px;
+  padding: 10px 24px;
+  text-align: center;
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+.s1-pill .big {
+  font-size: 20px;
+  font-weight: 900;
+  display: block;
+  color: #fbbf24;
+  margin-bottom: 2px;
+}
+
+/* Body */
+.s1-body {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 52px 1fr;
+  padding: 20px 32px 16px;
+  gap: 0;
+  align-items: start;
+  background: var(--bg);
+}
+
+/* Before */
+.ba-panel {
+  border-radius: 12px;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.ba-panel-head {
+  padding: 8px 16px;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  letter-spacing: 0.5px;
+}
+.before-panel .ba-panel-head { background: #fde8e8; color: #b91c1c; }
+.after-panel  .ba-panel-head { background: var(--teal-lt); color: var(--teal); }
+
+.before-panel { background: #fff8f8; border: 1.5px solid #fca5a5; }
+.after-panel  { background: #f8fdfb; border: 1.5px solid #6ee7b7; }
+
+/* ▼ [修正③] 疑似デモ感 — 操作比較バー */
+.demo-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px 2px;
+  font-size: 9px;
+  font-weight: 700;
+}
+.before-panel .demo-bar { color: #b91c1c; }
+.after-panel  .demo-bar { color: var(--teal); }
+.demo-bar .demo-label {
+  background: #fde8e8;
+  color: #b91c1c;
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-size: 9px;
+  font-weight: 900;
+}
+.after-panel .demo-bar .demo-label {
+  background: var(--teal-lt);
+  color: var(--teal);
+}
+.demo-bar .demo-action {
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.2px;
+}
+.before-panel .demo-bar .demo-action { color: #9b1c1c; }
+.after-panel  .demo-bar .demo-action { color: var(--teal); }
+
+/* Before table */
+.before-tbl-wrap { padding: 6px 12px 4px; }
+.btbl {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 8px;
+}
+.btbl th {
+  background: #fca5a5;
+  color: #7f1d1d;
+  padding: 3px 4px;
+  text-align: center;
+  border: 1px solid #fca5a5;
+  font-size: 7.5px;
+  font-weight: 700;
+}
+.btbl td {
+  border: 1px solid #fecaca;
+  padding: 3px 5px;
+  vertical-align: top;
+  background: #fff;
+  font-size: 7.5px;
+  line-height: 1.5;
+}
+.cv { font-weight: 700; color: #b91c1c; }
+.cc { color: #9ca3af; font-size: 7px; }
+.cs { color: #374151; }
+.cstar { color: #d97706; font-weight: 700; }
+.clib  { color: #7c3aed; font-weight: 700; }
+
+/* ▼ [修正④（v4追加）] 当事者意識を引き出す1文のスタイル */
+.before-context {
+  margin: 2px 12px 5px;
+  padding: 5px 12px;
+  background: #fff0f0;
+  border-left: 3px solid #fca5a5;
+  border-radius: 0 6px 6px 0;
+  font-size: 10px;
+  font-weight: 700;
+  color: #9b1c1c;
+  line-height: 1.4;
+}
+.before-notes { padding: 5px 12px 8px; display: flex; flex-direction: column; gap: 4px; }
+.bnote { display: flex; align-items: flex-start; gap: 6px; font-size: 9.5px; color: #555; line-height: 1.4; }
+.bnote .dot { width: 5px; height: 5px; background: #fca5a5; border-radius: 50%; flex-shrink: 0; margin-top: 4px; }
+
+/* Arrow */
+.arrow-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 6px;
+  padding-top: 50px;
+}
+.arrow-ring {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--teal), #34d399);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  color: #fff;
+  font-weight: 900;
+  box-shadow: 0 4px 14px rgba(42,140,122,0.3);
+}
+.arrow-label { font-size: 8px; font-weight: 700; color: var(--teal); text-align: center; line-height: 1.3; }
+
+/* ▼ [修正③] After — プルダウン疑似UI */
+.after-tbl-wrap { padding: 6px 12px 4px; }
+.atbl {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 9px;
+}
+.atbl th {
+  background: var(--teal);
+  color: #fff;
+  padding: 4px 6px;
+  text-align: center;
+  font-size: 8px;
+  border: 1px solid var(--teal);
+  font-weight: 700;
+}
+.atbl td {
+  border: 1px solid #a7f3d0;
+  padding: 3px 6px;
+  font-size: 9px;
+  text-align: center;
+  background: #fff;
+}
+.atbl tr:nth-child(even) td { background: #f0fdf4; }
+.tag { display: inline-block; padding: 1px 8px; border-radius: 20px; font-size: 8px; font-weight: 700; }
+.td { background: #fef3c7; color: #92400e; }
+.tv { background: #d1fae5; color: #065f46; }
+
+/* プルダウン疑似UI */
+.dd {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  background: #eff6ff;
+  border: 1px solid #93c5fd;
+  border-radius: 4px;
+  padding: 1px 6px 1px 7px;
+  font-size: 8.5px;
+  font-weight: 700;
+  color: #1e40af;
+  cursor: default;
+}
+.dd::after {
+  content: '▾';
+  font-size: 8px;
+  color: #60a5fa;
+  margin-left: 2px;
+}
+.dd-active {
+  background: #dbeafe;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59,130,246,0.15);
+}
+
+.after-notes { padding: 5px 12px 8px; display: flex; flex-direction: column; gap: 4px; }
+.anote { display: flex; align-items: flex-start; gap: 6px; font-size: 9.5px; color: #555; line-height: 1.4; }
+.anote .dot { width: 5px; height: 5px; background: var(--teal-mid); border-radius: 50%; flex-shrink: 0; margin-top: 4px; }
+.anote strong { color: var(--teal); }
+
+/* Catch strip */
+.s1-catch {
+  background: var(--ink);
+  padding: 11px 48px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.9);
+  letter-spacing: 0.5px;
+}
+.s1-catch em { color: #fbbf24; font-style: normal; }
+
+/* ==============================
+   SLIDE 2 — Structure
+============================== */
+.s2 { background: var(--white); }
+
+.s2-topbar {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 24px 56px 20px;
+}
+.s2-eyebrow {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--teal);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.s2-title {
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--ink);
+  line-height: 1.3;
+}
+.s2-title em { color: var(--teal); font-style: normal; }
+.s2-sub {
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
+.s2-body {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  padding: 24px 56px 20px;
+  background: var(--bg);
+}
+
+.s2-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 22px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(26,35,50,0.06);
+}
+.s2-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+.s2-card.c1::before { background: linear-gradient(90deg, var(--teal), var(--teal-mid)); }
+.s2-card.c2::before { background: linear-gradient(90deg, var(--amber), #fbbf24); }
+.s2-card.c3::before { background: linear-gradient(90deg, #6366f1, #818cf8); }
+
+.s2-card-icon { font-size: 26px; }
+.s2-card-title {
+  font-size: 14px;
+  font-weight: 900;
+  color: var(--ink);
+  line-height: 1.35;
+}
+.s2-card-items {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.s2-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  font-size: 11px;
+  color: var(--ink-mid);
+  line-height: 1.45;
+}
+.s2-item .dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+.c1 .dot { background: var(--teal-mid); }
+.c2 .dot { background: var(--amber); }
+.c3 .dot { background: #818cf8; }
+
+.s2-card-label {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  width: fit-content;
+  margin-top: 2px;
+}
+.c1 .s2-card-label { background: var(--teal-lt); color: var(--teal); }
+.c2 .s2-card-label { background: var(--amber-lt); color: var(--amber); }
+.c3 .s2-card-label { background: #ede9fe; color: #5b21b6; }
+
+.s2-footer {
+  background: var(--teal-lt);
+  border-top: 1px solid #b2e8df;
+  padding: 14px 56px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.s2-footer-icon { font-size: 20px; flex-shrink: 0; }
+.s2-footer-text {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--teal);
+  line-height: 1.4;
+}
+.s2-footer-text span {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--ink-soft);
+  display: block;
+  margin-top: 2px;
+}
+
+/* ==============================
+   SLIDE 3 — CTA
+============================== */
+.s3 { background: var(--white); }
+
+.s3-topbar {
+  background: linear-gradient(135deg, var(--teal) 0%, #1a6b5c 100%);
+  padding: 22px 56px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.s3-eyebrow {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: rgba(255,255,255,0.65);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.s3-title {
+  font-size: 24px;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.2;
+}
+/* ▼ [修正②] タイトルを「一緒に作らせてください」に変更 */
+.s3-title em { color: #fef9c3; font-style: normal; }
+.s3-badge {
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 10px 22px;
+  border-radius: 50px;
+  text-align: center;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+.s3-badge .big { font-size: 17px; font-weight: 900; display: block; color: #fef9c3; margin-bottom: 2px; }
+
+.s3-body {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  padding: 28px 56px 0;
+  gap: 0;
+  background: var(--bg);
+}
+
+.s3-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding-right: 36px;
+}
+.s3-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+  box-shadow: 0 1px 4px rgba(26,35,50,0.05);
+}
+.step-num {
+  width: 28px; height: 28px;
+  background: var(--teal);
+  color: #fff;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px;
+  font-weight: 900;
+  flex-shrink: 0;
+}
+.step-title { font-size: 13px; font-weight: 900; color: var(--ink); margin-bottom: 3px; }
+.step-desc  { font-size: 10.5px; color: var(--ink-soft); line-height: 1.5; }
+
+.s3-divider { background: var(--border); width: 1px; }
+
+.s3-cta {
+  padding-left: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+}
+.s3-quote {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--teal);
+  border-radius: 0 10px 10px 0;
+  padding: 14px 18px;
+  font-size: 13px;
+  color: var(--ink-mid);
+  line-height: 1.7;
+  box-shadow: 0 1px 4px rgba(26,35,50,0.05);
+}
+.s3-quote strong { color: var(--ink); font-size: 14px; display: block; margin-bottom: 4px; }
+
+/* ▼ [修正②] CTAボタンのテキスト変更 */
+.s3-cta-btn {
+  background: linear-gradient(135deg, var(--teal) 0%, #1a6b5c 100%);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 900;
+  padding: 16px 28px;
+  border-radius: 50px;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(42,140,122,0.30);
+  line-height: 1.4;
+}
+.s3-cta-btn .sub {
+  font-size: 10px;
+  font-weight: 400;
+  opacity: 0.8;
+  display: block;
+  margin-top: 3px;
+}
+.s3-note {
+  font-size: 10px;
+  color: var(--ink-mute);
+  text-align: center;
+}
+/* ▼ [修正⑥（v5追加）] 「今やる理由」を添える1行のスタイル */
+.s3-ready-note {
+  font-size: 11px;
+  color: var(--ink-soft);
+  text-align: center;
+  letter-spacing: 0.3px;
+  padding: 2px 0 4px;
+}
+
+/* ▼ [修正①] 不安を消すバナー（スライド3用） */
+.s3-reassure-bar {
+  background: rgba(255,255,255,0.12);
+  border-top: 1px solid rgba(255,255,255,0.18);
+  padding: 7px 56px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.90);
+  letter-spacing: 0.3px;
+}
+.s3-reassure-bar::before { content: '✓'; color: #6ee7b7; font-size: 13px; }
+
+.s3-footer {
+  background: var(--white);
+  border-top: 1px solid var(--border);
+  padding: 10px 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.s3-footer-note { font-size: 10px; color: var(--ink-mute); }
+.s3-flow {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+.sf { display: flex; align-items: center; gap: 3px; font-size: 9px; color: var(--ink-soft); }
+.sf-n {
+  width: 16px; height: 16px;
+  background: var(--teal);
+  color: #fff;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 8px;
+  font-weight: 700;
+}
+.sf-arr { color: var(--border); font-size: 12px; }
+
+/* ==============================
+   MOBILE RESPONSIVE
+============================== */
+@media (max-width: 980px) {
+  body {
+    padding: 16px 0 40px;
+    gap: 24px;
+    background: #dde4ec;
+  }
+
+  .slide {
+    width: 100vw;
+    min-height: auto;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  /* Slide 1 topbar */
+  .s1-topbar {
+    padding: 20px 20px 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .s1-title { font-size: 20px; }
+  .s1-pill {
+    align-self: flex-end;
+    padding: 8px 18px;
+  }
+  .s1-pill .big { font-size: 17px; }
+
+  /* Slide 1 body — stack vertically */
+  .s1-body {
+    display: flex;
+    flex-direction: column;
+    padding: 16px 14px 12px;
+    gap: 12px;
+  }
+  .arrow-col {
+    flex-direction: row;
+    padding-top: 0;
+    justify-content: center;
+    gap: 8px;
+  }
+  .arrow-ring { width: 32px; height: 32px; font-size: 14px; }
+  .ba-panel-head { font-size: 13px; padding: 10px 14px; }
+  .demo-bar { padding: 6px 14px 2px; font-size: 10px; }
+  .before-tbl-wrap, .after-tbl-wrap { padding: 6px 10px 4px; }
+  .btbl, .atbl { font-size: 10px; }
+  .btbl th, .btbl td { font-size: 9px; padding: 4px 5px; }
+  .atbl th { font-size: 9px; padding: 5px 6px; }
+  .atbl td { font-size: 10px; padding: 4px 6px; }
+  .before-notes, .after-notes { padding: 6px 14px 10px; gap: 6px; }
+  .bnote, .anote { font-size: 11px; }
+  .before-context { font-size: 12px; margin: 4px 14px 6px; padding: 6px 14px; }
+  .s1-catch { font-size: 13px; padding: 12px 20px; }
+
+  /* Slide 2 */
+  .s2-topbar { padding: 20px 20px 16px; }
+  .s2-title { font-size: 18px; }
+  .s2-sub { font-size: 12px; }
+  .s2-body {
+    display: flex;
+    flex-direction: column;
+    padding: 16px 14px 14px;
+    gap: 14px;
+  }
+  .s2-card { padding: 18px 16px 16px; }
+  .s2-card-title { font-size: 15px; }
+  .s2-card-items .s2-item { font-size: 12px; }
+  .s2-footer { padding: 14px 20px; }
+  .s2-footer-text { font-size: 14px; }
+  .s2-footer-text span { font-size: 12px; }
+
+  /* Slide 3 */
+  .s3-topbar {
+    padding: 20px 20px 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .s3-title { font-size: 18px; }
+  .s3-badge { align-self: flex-end; padding: 8px 18px; }
+  .s3-reassure-bar { padding: 8px 20px; font-size: 12px; }
+  .s3-body {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 14px 0;
+    gap: 0;
+  }
+  .s3-steps { padding-right: 0; gap: 14px; }
+  .s3-step { padding: 14px 14px; gap: 12px; }
+  .step-num { width: 30px; height: 30px; font-size: 14px; }
+  .step-title { font-size: 14px; }
+  .step-desc { font-size: 12px; }
+  .s3-divider { display: none; }
+  .s3-cta { padding-left: 0; padding-top: 20px; gap: 14px; }
+  .s3-quote { font-size: 13px; padding: 14px 16px; }
+  .s3-quote strong { font-size: 15px; }
+  .s3-ready-note { font-size: 12px; }
+  .s3-cta-btn { font-size: 16px; padding: 18px 24px; }
+  .s3-note { font-size: 11px; }
+  .s3-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 12px 20px 14px;
+  }
+  .s3-footer-note { font-size: 11px; }
+  .s3-flow { flex-wrap: wrap; gap: 6px; }
+  .sf { font-size: 10px; }
+
+  /* Common */
+  .slide-num { font-size: 11px; bottom: 14px; right: 18px; }
+}
+
+/* ==============================
+   PRINT
+============================== */
+@media print {
+  body { background: #fff; padding: 0; gap: 0; }
+  .slide { width: 100vw; height: 100vh; border-radius: 0; box-shadow: none; page-break-after: always; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     SLIDE 1 — Before / After
+============================================================ -->
+<div class="slide">
+  <div class="s1-topbar">
+    <div class="s1-topbar-left">
+      <div class="s1-eyebrow">整理提案 — Slide 1 of 3</div>
+      <div class="s1-title">シフト作成時間を<em>半分</em>にする方法</div>
+      <!-- ▼ 修正① 不安を消す一文 -->
+      <div class="s1-reassure">今のやり方はそのままで大丈夫です</div>
+    </div>
+    <div class="s1-pill">
+      <span class="big">3時間 → 1.5時間</span>
+      毎月の作業時間の目安
+    </div>
+  </div>
+
+  <div class="s1-body">
+    <!-- BEFORE -->
+    <div class="ba-panel before-panel">
+      <!-- ▼ 修正③ 疑似デモ感 — 操作ラベル -->
+      <div class="ba-panel-head">📋 今のシフト表のイメージ</div>
+      <div class="demo-bar">
+        <span class="demo-label">今</span>
+        <span class="demo-action">考えながら配置する</span>
+      </div>
+      <div class="before-tbl-wrap">
+        <table class="btbl">
+          <tr>
+            <th>日付</th>
+            <th>1日（日）</th>
+            <th>2日（月）</th>
+            <th>3日（火）</th>
+          </tr>
+          <tr>
+            <td style="font-weight:700;background:#fef2f2;font-size:7.5px;">会場①</td>
+            <td>
+              <span class="cv">アリオ</span><br>
+              <span class="cc">ハーベストコート</span><br>
+              <span class="cs">〈瀬戸〉</span><br>
+              <span class="cs">〈真実〉</span><br>
+              <span class="cs">〈西浦〉</span><br>
+              <span class="cstar">★〈阿部〉</span>
+            </td>
+            <td>
+              <span class="cv">アリオ</span><br>
+              <span class="cc">ハーベストコート</span><br>
+              <span class="cs">〈瀬戸〉</span><br>
+              <span class="cs">〈真実〉</span><br>
+              <span class="cs">〈岩崎〉</span><br>
+              <span class="cstar">★〈伏見〉</span>
+            </td>
+            <td>
+              <span class="cv">アリオ</span><br>
+              <span class="cc">ハーベストコート</span><br>
+              <span class="cs">〈西浦〉</span><br>
+              <span class="cs">〈小寺〉</span><br>
+              <span class="cs">〈清水〉</span><br>
+              <span class="cstar">★〈藤田〉</span>
+            </td>
+          </tr>
+          <tr>
+            <td style="font-weight:700;background:#fef2f2;font-size:7.5px;">会場②</td>
+            <td>
+              <span class="cv">三井</span><br>
+              <span class="cc">エルフィンコート</span><br>
+              <span class="cs">〈小寺〉</span><br>
+              <span class="cs">〈遠藤〉</span><br>
+              <span class="clib">〈★〉</span><br>
+              <span class="clib">〈★〉</span>
+            </td>
+            <td>
+              <span class="cv">三井</span><br>
+              <span class="cc">エルフィンコート</span><br>
+              <span class="cs">〈小寺〉</span><br>
+              <span class="cstar">★〈渡部〉</span><br>
+              <span class="cstar">★〈山脇〉</span>
+            </td>
+            <td>
+              <span class="cv">東武イースト</span><br>
+              <span class="cs">〈田原〉</span><br>
+              <span class="cs">〈篠谷〉</span>
+            </td>
+          </tr>
+          <tr>
+            <td style="font-weight:700;background:#fef2f2;font-size:7.5px;">会場③</td>
+            <td>
+              <span class="cv">ビックカメラ</span><br>
+              <span class="clib">〈CP〉</span><br>
+              <span class="clib">〈CP〉</span>
+            </td>
+            <td>
+              <span class="cv">ラソラ大階段</span><br>
+              <span class="cc">（千代田）</span><br>
+              <span class="cs">〈守屋〉</span><br>
+              <span class="cs">〈西郷〉</span>
+            </td>
+            <td>
+              <span class="cv">ラソラ大階段</span><br>
+              <span class="cc">（千代田）</span><br>
+              <span class="cs">〈守屋〉</span><br>
+              <span class="cs">〈西郷〉</span>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <!-- ▼ [修正④（v4追加）] 当事者意識を引き出す1文 -->
+      <div class="before-context">毎回、この中から最適な組み合わせを考えている状態</div>
+      <div class="before-notes">
+        <div class="bnote"><span class="dot"></span>1セルに会場・クライアント・スタッフが混在</div>
+        <div class="bnote"><span class="dot"></span>★・CP・Libの意味は担当者だけが把握</div>
+        <div class="bnote"><span class="dot"></span>集計・転記はすべて手作業</div>
+      </div>
+    </div>
+
+    <!-- ARROW -->
+    <div class="arrow-col">
+      <div class="arrow-ring">→</div>
+      <div class="arrow-label">整理<br>後</div>
+    </div>
+
+    <!-- AFTER -->
+    <div class="ba-panel after-panel">
+      <div class="ba-panel-head">✅ 整理後のシフト表のイメージ</div>
+      <!-- ▼ 修正③ 疑似デモ感 — 操作ラベル -->
+      <div class="demo-bar">
+        <span class="demo-label">整理後</span>
+        <span class="demo-action">候補から選ぶだけ</span>
+      </div>
+      <div class="after-tbl-wrap">
+        <table class="atbl">
+          <tr>
+            <th>日付</th>
+            <th>会場名</th>
+            <th>担当スタッフ</th>
+            <th>クライアント</th>
+            <th>備考</th>
+          </tr>
+          <tr>
+            <td><span class="tag td">2/1</span></td>
+            <td><span class="tag tv">アリオ札幌</span></td>
+            <!-- ▼ 修正③ プルダウン疑似UI（選択中の状態） -->
+            <td><span class="dd dd-active">瀬戸 / 真実</span></td>
+            <td>ドコモ</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><span class="tag td">2/1</span></td>
+            <td><span class="tag tv">三井エルフィン</span></td>
+            <td><span class="dd">小寺 / 遠藤</span></td>
+            <td>ドコモ</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><span class="tag td">2/2</span></td>
+            <td><span class="tag tv">アリオ札幌</span></td>
+            <td><span class="dd">瀬戸 / 岩崎</span></td>
+            <td>ドコモ</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><span class="tag td">2/2</span></td>
+            <td><span class="tag tv">ラソラ大階段</span></td>
+            <td><span class="dd">守屋 / 西郷</span></td>
+            <td>ドコモ</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><span class="tag td">2/3</span></td>
+            <td><span class="tag tv">アリオ札幌</span></td>
+            <td><span class="dd">西浦 / 清水</span></td>
+            <td>ドコモ</td>
+            <td>増員対応</td>
+          </tr>
+          <tr>
+            <td><span class="tag td">2/3</span></td>
+            <td><span class="tag tv">東武イースト</span></td>
+            <td><span class="dd">田原 / 篠谷</span></td>
+            <td>ドコモ</td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+      <div class="after-notes">
+        <div class="anote"><span class="dot"></span>スタッフ名は<strong>プルダウンで選ぶだけ</strong></div>
+        <div class="anote"><span class="dot"></span>誰でも<strong>同じように作れる構造</strong></div>
+        <div class="anote"><span class="dot"></span>別システムへの転記が<strong>自動化できる</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="s1-catch">
+    シフト作成を <em>「考える作業」</em> から <em>「選ぶ作業」</em> に変えます
+  </div>
+  <div class="slide-num">1 / 3</div>
+</div>
+
+
+<!-- ============================================================
+     SLIDE 2 — Structure
+============================================================ -->
+<div class="slide s2">
+  <div class="s2-topbar">
+    <div class="s2-eyebrow">現状の整理 — Slide 2 of 3</div>
+    <div class="s2-title">
+      今のシフトは、<em>「高度な判断が集まっている状態」</em>です
+    </div>
+    <div class="s2-sub">
+      これは経験と知識の積み重ねの証でもあります。少し整理するだけで、もっと扱いやすくなります。
+    </div>
+  </div>
+
+  <div class="s2-body">
+    <!-- Card 1 -->
+    <div class="s2-card c1">
+      <div class="s2-card-icon">🧩</div>
+      <div class="s2-card-title">判断が頭の中に<br>集まっている</div>
+      <div class="s2-card-items">
+        <div class="s2-item"><span class="dot"></span>会場ごとの配置条件</div>
+        <div class="s2-item"><span class="dot"></span>スタッフの組み合わせの考え方</div>
+        <div class="s2-item"><span class="dot"></span>記号（★・CP・Lib）の意味</div>
+      </div>
+      <div class="s2-card-label">経験値の蓄積</div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="s2-card c2">
+      <div class="s2-card-icon">🔄</div>
+      <div class="s2-card-title">再現が少し<br>難しい構造</div>
+      <div class="s2-card-items">
+        <div class="s2-item"><span class="dot"></span>他の方が同じように作るのが難しい</div>
+        <div class="s2-item"><span class="dot"></span>引き継ぎに工数がかかる</div>
+        <div class="s2-item"><span class="dot"></span>負担が一箇所に集中しやすい</div>
+      </div>
+      <div class="s2-card-label">整理で改善できる</div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="s2-card c3">
+      <div class="s2-card-icon">📊</div>
+      <div class="s2-card-title">データとして<br>活かしきれていない</div>
+      <div class="s2-card-items">
+        <div class="s2-item"><span class="dot"></span>システムに乗せにくい構造</div>
+        <div class="s2-item"><span class="dot"></span>手入力での転記が残る</div>
+        <div class="s2-item"><span class="dot"></span>実績の集計・分析がしにくい</div>
+      </div>
+      <div class="s2-card-label">将来の活用につながる</div>
+    </div>
+  </div>
+
+  <div class="s2-footer">
+    <div class="s2-footer-icon">💡</div>
+    <div class="s2-footer-text">
+      やり方は変えずに、"整理するだけ"で改善できます。
+      <span>今の判断・経験はそのまま活かします。「選びやすくする」だけです。</span>
+    </div>
+  </div>
+  <div class="slide-num">2 / 3</div>
+</div>
+
+
+<!-- ============================================================
+     SLIDE 3 — CTA
+============================================================ -->
+<div class="slide s3">
+  <div class="s3-topbar">
+    <div>
+      <div class="s3-eyebrow">ご提案 — Slide 3 of 3</div>
+      <!-- ▼ 修正② タイトルを「一緒に作らせてください」に変更 -->
+      <div class="s3-title">来月分、<em>1回だけ一緒に作らせてください。</em></div>
+    </div>
+    <div class="s3-badge">
+      <span class="big">リスクゼロ</span>
+      1ヶ月トライアル
+    </div>
+  </div>
+  <!-- ▼ 修正① 不安を消す一文（スライド3ヘッダー直下） -->
+  <div class="s3-reassure-bar">今のやり方はそのままで大丈夫です</div>
+
+  <div class="s3-body">
+    <!-- Steps -->
+    <div class="s3-steps">
+      <div class="s3-step">
+        <div class="step-num">1</div>
+        <div>
+          <div class="step-title">現状のExcelをそのまま使用</div>
+          <div class="step-desc">新しいシステムの導入は不要です。今お使いのExcelのデータをそのまま活用します。</div>
+        </div>
+      </div>
+      <div class="s3-step">
+        <div class="step-num">2</div>
+        <div>
+          <div class="step-title">準備はすべてこちらで対応</div>
+          <div class="step-desc">スタッフ名の整理・会場名の統一・フォーマット設定まで、すべてこちらで用意します。</div>
+        </div>
+      </div>
+      <div class="s3-step">
+        <div class="step-num">3</div>
+        <div>
+          <div class="step-title">今まで通り判断するだけ</div>
+          <div class="step-desc">「誰をどこに入れるか」という判断はそのまま。入力の手間だけが減ります。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="s3-divider"></div>
+
+    <!-- CTA -->
+    <div class="s3-cta">
+      <div class="s3-quote">
+        <!-- ▼ 修正② クロージング文言を強化 -->
+        <strong>「来月分、1回だけ一緒に作らせてください。」</strong>
+        管理もしやすくなり、<br>
+        システムにもそのまま活用できます。
+      </div>
+      <!-- ▼ [修正⑥（v5追加）] 「今やる理由」を明確にする1行 -->
+      <div class="s3-ready-note">来月分からそのまま使える形にします</div>
+      <!-- ▼ 修正③ CTAボタン文言を当事者化 -->
+      <div class="s3-cta-btn">
+        1回だけ一緒に作ってみる
+        <span class="sub">→ 準備はすべてこちらで行います</span>
+      </div>
+      <div class="s3-note">※ まずは試すだけで大丈夫です。</div>
+    </div>
+  </div>
+
+  <div class="s3-footer">
+    <div class="s3-footer-note">現在のExcelデータをそのまま活用します。新しいシステムの導入は不要です。</div>
+    <div class="s3-flow">
+      <div class="sf"><div class="sf-n">1</div>Excelを整理</div>
+      <div class="sf-arr">›</div>
+      <div class="sf"><div class="sf-n">2</div>新フォーマットで入力</div>
+      <div class="sf-arr">›</div>
+      <div class="sf"><div class="sf-n">3</div>自動集計・転記ゼロ</div>
+      <div class="sf-arr">›</div>
+      <div class="sf"><div class="sf-n">4</div>システム連携</div>
+    </div>
+  </div>
+  <div class="slide-num">3 / 3</div>
+</div>
+
+</body>
+</html>
