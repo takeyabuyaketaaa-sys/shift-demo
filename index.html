@@ -758,13 +758,68 @@ body {
 /* ==============================
    PRINT
 ============================== */
+/* ===== 期待値コントロール — デモ説明バナー ===== */
+.demo-notice-bar {
+  width: 100%;
+  max-width: 960px;
+  background: #fffbeb;
+  border: 1px solid #fcd34d;
+  border-radius: 10px;
+  padding: 10px 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 12px;
+  color: #78350f;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+.demo-notice-bar .notice-icon {
+  font-size: 16px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.demo-notice-bar strong { font-weight: 700; }
+
+/* プルダウン疑似UIの「選択イメージ」ラベル */
+.dd-image-note {
+  display: block;
+  font-size: 8px;
+  color: var(--ink-mute);
+  font-weight: 400;
+  margin-top: 3px;
+  letter-spacing: 0.2px;
+}
+
+/* After panel の「操作イメージ」注釈 */
+.after-image-note {
+  margin: 0 12px 6px;
+  padding: 5px 12px;
+  background: #f0fdf4;
+  border-left: 2px solid #a7f3d0;
+  border-radius: 0 6px 6px 0;
+  font-size: 9.5px;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+
 @media print {
   body { background: #fff; padding: 0; gap: 0; }
   .slide { width: 100vw; height: 100vh; border-radius: 0; box-shadow: none; page-break-after: always; }
+  .demo-notice-bar { display: none; }
 }
 </style>
 </head>
 <body>
+
+<!-- 期待値コントロール — デモ説明バナー -->
+<div class="demo-notice-bar">
+  <span class="notice-icon">ℹ️</span>
+  <div>
+    <strong>このページは「操作イメージを確認するためのデモ」です。</strong><br>
+    実際の運用はExcelや既存の管理表上で行う想定です。このデモでは整理後の構造・見た目をご確認いただけます。
+  </div>
+</div>
 
 <!-- ============================================================
      SLIDE 1 — Before / After
@@ -949,8 +1004,10 @@ body {
           </tr>
         </table>
       </div>
+      <!-- 操作イメージ注釈 -->
+      <div class="after-image-note">※ 上の画面は操作イメージです。実際はExcel上でプルダウンから選ぶ形で運用します。</div>
       <div class="after-notes">
-        <div class="anote"><span class="dot"></span>スタッフ名は<strong>プルダウンで選ぶだけ</strong></div>
+        <div class="anote"><span class="dot"></span>スタッフ名は<strong>候補から選ぶだけ</strong>（プルダウンのイメージ）</div>
         <div class="anote"><span class="dot"></span>誰でも<strong>同じように作れる構造</strong></div>
         <div class="anote"><span class="dot"></span>別システムへの転記が<strong>自動化できる</strong></div>
       </div>
@@ -959,6 +1016,7 @@ body {
 
   <div class="s1-catch">
     シフト作成を <em>「考える作業」</em> から <em>「選ぶ作業」</em> に変えます
+    <span style="display:block;font-size:10px;font-weight:400;opacity:.7;margin-top:4px;letter-spacing:.3px;">※ 実際の運用はExcelや既存の管理表上で行う想定です</span>
   </div>
   <div class="slide-num">1 / 3</div>
 </div>
